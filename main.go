@@ -9,12 +9,17 @@ import (
 
 func main(){
 
-  apiKey := os.Getenv("steam_api_key")
+  apiKey := os.Getenv("STEAM_API_KEY")
   steamClient := steam.NewClient(apiKey)
-  response, err := steamClient.GetOwnedGames("76561197984646227")
+  ownedGames, err := steamClient.GetOwnedGames("76561197984646227")
+ 
   if err != nil{
 	 fmt.Printf("error: %v", err)
   }
-  fmt.Printf("%s", response)
+
+   for _,game := range ownedGames.Games{
+    fmt.Printf("app ID: %v\n", game)
+  }
+  
 }
 
