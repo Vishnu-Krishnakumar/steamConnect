@@ -20,7 +20,7 @@ func main(){
    for _, game := range ownedGames.Games{
    
     name, _ := steam.GetApp(game.AppId)
-    fmt.Printf("app ID: %d\n app name: %s\n", game, name)
+    fmt.Printf("app ID: %d\napp name: %s\n", game.AppId, name)
     
   }
   
