@@ -44,3 +44,4 @@ func (c Client) GetOwnedGames (steamId string) (games OwnedGames , err error) {
 	return
 }
 
+

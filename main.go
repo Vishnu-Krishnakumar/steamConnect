@@ -17,8 +17,11 @@ func main(){
 	 fmt.Printf("error: %v", err)
   }
 
-   for _,game := range ownedGames.Games{
-    fmt.Printf("app ID: %v\n", game)
+   for _, game := range ownedGames.Games{
+   
+    name, _ := steam.GetApp(game.AppId)
+    fmt.Printf("app ID: %d\n app name: %s\n", game, name)
+    
   }
   
 }
