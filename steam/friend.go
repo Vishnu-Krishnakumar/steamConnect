@@ -11,6 +11,7 @@ type Friend struct {
 	FriendSince  time.Time `json:"friend_since"`
 }
 
+// UnmarshalJSON implements the Unmarsheler interface to allow map steams FriendSince to a time.Time
 func (f *Friend) UnmarshalJSON(data []byte) error {
 
 	type FriendJson struct {
@@ -18,6 +19,7 @@ func (f *Friend) UnmarshalJSON(data []byte) error {
 		Relationship string    `json:"relationship"`
 		FriendSince  int64    `json:"friend_since"`
 	}
+
 	var temp FriendJson 
 
 	if err := json.Unmarshal(data, &temp); err != nil {       
@@ -25,6 +27,7 @@ func (f *Friend) UnmarshalJSON(data []byte) error {
 	 }     
 	f.SteamId = temp.SteamId
 	f.Relationship = temp.Relationship
+	// Converting a int64 unix time stamp to a time.Time format
 	f.FriendSince = time.Unix(temp.FriendSince,0)
 	return nil
 }
