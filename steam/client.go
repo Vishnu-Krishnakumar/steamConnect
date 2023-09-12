@@ -16,6 +16,7 @@ func NewClient(apiKey string) Client {
 		apiKey,
 	}
 }
+
 type OwnedGamesResponse struct{
 	Owned OwnedGames `json:"response"`
 }
